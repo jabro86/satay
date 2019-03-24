@@ -1,0 +1,27 @@
+type Restrictions {
+    submissionRequests: Int!
+    formRequests: Int!
+    emails: Int!
+    forms: Int!
+}
+
+type ApiCalls {
+    used: Restrictions!
+    limit: Restrictions!
+    reset: String!
+}
+
+type Project {
+    id: ID!
+    title: String!
+    description: String!
+    serviceName: String!
+    created: String!
+    modified: String!
+    tag: String
+    apiCalls: ApiCalls
+}
+
+type Query {
+    findProjects: [Project!]!
+}

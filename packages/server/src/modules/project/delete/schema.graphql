@@ -1,0 +1,3 @@
+type Mutation {
+  deleteProject(id: String!): Boolean!
+}

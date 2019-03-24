@@ -1,0 +1,75 @@
+{
+  "name": "@faas/web",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@faas/common": "0.1.0",
+    "@faas/controller": "0.1.0",
+    "@faas/ra-data-prisma": "0.1.0",
+    "antd": "3.15.1",
+    "apollo-boost": "0.3.1",
+    "bootstrap": "4.3.1",
+    "bootswatch": "4.3.1",
+    "formik": "1.5.1",
+    "graphql": "14.1.1",
+    "lodash": "4.17.11",
+    "react": "16.6.3",
+    "react-admin": "2.8.1",
+    "react-apollo": "2.4.1",
+    "react-beautiful-dnd": "10.1.0",
+    "react-dom": "16.6.3",
+    "react-grid-layout": "0.16.6",
+    "react-jsonschema-form": "1.3.0",
+    "react-jsonschema-form-bs4": "1.0.6",
+    "react-router-dom": "4.3.1",
+    "react-sizeme": "2.5.2",
+    "styled-components": "4.1.3",
+    "yup": "0.27.0"
+  },
+  "devDependencies": {
+    "@types/graphql": "14.0.7",
+    "@types/lodash": "4.14.123",
+    "@types/node": "11.9.5",
+    "@types/react": "16.8.8",
+    "@types/react-beautiful-dnd": "10.0.3",
+    "@types/react-dom": "16.8.2",
+    "@types/react-grid-layout": "0.16.7",
+    "@types/react-jsonschema-form": "1.0.14",
+    "@types/react-router-dom": "4.3.1",
+    "@types/react-sortable-tree": "0.3.5",
+    "@types/styled-components": "4.1.12",
+    "@types/yup": "0.26.12",
+    "husky": "1.3.1",
+    "lint-staged": "8.1.5",
+    "prettier": "1.16.4",
+    "react-scripts": "2.1.8",
+    "typescript": "3.3.3333"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

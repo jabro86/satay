@@ -1,0 +1,15 @@
+input CreateProjectInput {
+  title: String!
+  description: String!
+}
+
+type CreateProjectResponse {
+  id: ID!
+  title: String!
+  description: String!
+  serviceName: String!
+}
+
+type Mutation {
+  createProject(input: CreateProjectInput!): CreateProjectResponse!
+}

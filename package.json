@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "scripts": {
+    "clean:node_modules": "rm -rf node_modules && rm -rf packages/**/node_modules",
+    "build:server": "lerna run build --scope={@faas/common,@faas/server}",
+    "build:web": "lerna run build --scope={@faas/common,@faas/controller,@faas/ra-data-graphql,@faas/ra-data-prisma,@faas/web}"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-elements",
+      "**/react-native-elements/**",
+      "**/expo",
+      "**/expo/**"
+    ]
+  },
+  "name": "faas",
+  "devDependencies": {
+    "lerna": "3.13.1"
+  }
+}

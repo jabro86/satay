@@ -1,0 +1,34 @@
+{
+  "name": "@faas/controller",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "npm-run-all --serial clean compile",
+    "clean": "rimraf ./dist",
+    "compile": "tsc",
+    "client:codegen": "apollo client:codegen --endpoint=http://localhost:4000 --target typescript --outputFlat ./src/schemaTypes.ts"
+  },
+  "dependencies": {
+    "graphql": "14.1.1",
+    "graphql-tag": "2.10.1",
+    "react": "16.6.3",
+    "react-apollo": "2.4.1",
+    "react-dom": "16.6.3",
+    "react-router": "4.3.1"
+  },
+  "devDependencies": {
+    "@types/graphql": "14.0.7",
+    "@types/node": "11.9.5",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.2",
+    "@types/react-router": "4.4.5",
+    "apollo": "2.5.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.16.4",
+    "tslint": "5.13.0",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.3.3333"
+  }
+}
