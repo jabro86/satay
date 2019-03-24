@@ -15,6 +15,7 @@ import { ComponentBox } from "./nav/ComponentBox";
 let ID_GENERATOR = 0;
 
 const CONTENT_DROP_ID = "content";
+const NAV_DROP_ID = "nav";
 
 interface State {
   items: Item[];
@@ -47,12 +48,14 @@ export class ResourceDesigner extends React.Component<Props, State> {
     }
 
     if (destination.droppableId === CONTENT_DROP_ID) {
-      this.setState(state => ({
-        items: [
-          ...state.items,
-          { id: String(ID_GENERATOR++), content: draggableId }
-        ]
-      }));
+      if (source.droppableId === NAV_DROP_ID) {
+        this.setState(state => ({
+          items: [
+            ...state.items,
+            { id: String(ID_GENERATOR++), content: draggableId }
+          ]
+        }));
+      }
     }
   };
   onDragUpdate = (initial: DragUpdate, provided: ResponderProvided) => {};
@@ -69,7 +72,7 @@ export class ResourceDesigner extends React.Component<Props, State> {
           <Col span={8}>
             <ComponentBox
               title="Basic Components"
-              droppableId="basic-component"
+              droppableId={NAV_DROP_ID}
               initialExpanded={true}
             />
           </Col>

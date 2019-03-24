@@ -27,7 +27,7 @@ export class ItemComponent extends PureComponent<Props> {
           <Container
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            innerRef={provided.innerRef}
+            ref={provided.innerRef}
           >
             {this.props.item.content}
           </Container>
