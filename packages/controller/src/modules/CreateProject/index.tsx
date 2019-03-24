@@ -22,7 +22,7 @@ export interface CreateProjectProps {
   ) => Promise<string | undefined>;
 }
 
-export const withCreateProject = graphql<
+export const withCreateProject: (wrappedComponent: any) => React.ComponentClass<any, any> = graphql<
   any,
   CreateProjectMutation,
   CreateProjectMutationVariables,
