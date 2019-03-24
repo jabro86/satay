@@ -15,7 +15,9 @@
       "**/react-native-elements",
       "**/react-native-elements/**",
       "**/expo",
-      "**/expo/**"
+      "**/expo/**",
+      "**/styled-components",
+      "**/styled-components/**"
     ]
   },
   "name": "faas",
