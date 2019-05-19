@@ -16,7 +16,6 @@ import { createTestConn } from "./testUtils/createTestConn";
 import { BACKEND_URL, PORT } from "./utils/config";
 import { createTypeormConn } from "./utils/createTypeormConn";
 import { genSchema } from "./utils/genSchema";
-import { middlewareShield } from "./shield";
 
 const SESSION_SECRET = "ajslkjalksjdfkl";
 const RedisStore = connectRedis(session as any);
@@ -27,7 +26,7 @@ export const startServer = async () => {
   }
 
   const schema = genSchema() as GraphQLSchema;
-  applyMiddleware(schema, middlewareShield);
+  applyMiddleware(schema);
 
   const server = new GraphQLServer({
     schema,
