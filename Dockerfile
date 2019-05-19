@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /faas
+WORKDIR /satay
 
 COPY ./package.json .
 COPY ./packages/server/package.json ./packages/server/package.json
@@ -15,7 +15,7 @@ COPY ./packages/common/dist ./packages/common/dist
 COPY ./packages/server/.env.production ./packages/server/
 COPY ./ormconfig.json .
 
-WORKDIR /faas/packages/server
+WORKDIR /satay/packages/server
 
 ENV NODE_ENV production
 

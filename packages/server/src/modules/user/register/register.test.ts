@@ -2,7 +2,7 @@ import {
   emailNotLongEnough,
   invalidEmail,
   passwordNotLongEnough
-} from "@faas/common";
+} from "@satay/common";
 import * as faker from "faker";
 import { Connection } from "typeorm";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@faas/web",
+  "name": "@satay/web",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -19,9 +19,9 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@faas/common": "0.1.0",
-    "@faas/controller": "0.1.0",
-    "@faas/ra-data-prisma": "0.1.0",
+    "@satay/common": "0.1.0",
+    "@satay/controller": "0.1.0",
+    "@satay/ra-data-prisma": "0.1.0",
     "antd": "3.15.1",
     "apollo-boost": "0.3.1",
     "bootstrap": "4.3.1",

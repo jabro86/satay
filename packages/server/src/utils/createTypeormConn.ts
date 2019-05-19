@@ -1,7 +1,5 @@
 import { createConnection, getConnectionOptions } from "typeorm";
 
-import { Project } from "../entity/Project";
-import { Resource } from "../entity/Resource";
 import { User } from "../entity/User";
 import { DATABASE_URL } from "./config";
 
@@ -11,7 +9,7 @@ export const createTypeormConn = async () => {
     ? createConnection({
         ...connectionOptions,
         url: DATABASE_URL,
-        entities: [User, Project, Resource],
+        entities: [User],
         name: "default"
       } as any)
     : createConnection({ ...connectionOptions, name: "default" });

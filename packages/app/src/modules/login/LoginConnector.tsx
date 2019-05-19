@@ -1,4 +1,4 @@
-import { LoginController } from "@faas/controller";
+import { LoginController } from "@satay/controller";
 import { SecureStore } from "expo";
 import * as React from "react";
 

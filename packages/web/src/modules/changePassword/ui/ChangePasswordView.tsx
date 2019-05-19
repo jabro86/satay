@@ -1,8 +1,8 @@
-import { changePasswordSchema } from "@faas/common";
+import { changePasswordSchema } from "@satay/common";
 import {
   NormalizedErrorMap,
   ForgotPasswordChangeMutationVariables
-} from "@faas/controller";
+} from "@satay/controller";
 import { Button, Form as AntForm, Icon } from "antd";
 import { Field, Form, FormikProps, withFormik } from "formik";
 import React from "react";

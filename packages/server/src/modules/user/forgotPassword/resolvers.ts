@@ -1,4 +1,4 @@
-import { changePasswordSchema } from "@faas/common";
+import { changePasswordSchema } from "@satay/common";
 import * as bcrypt from "bcryptjs";
 
 import { forgotPasswordPrefix } from "../../../constants";

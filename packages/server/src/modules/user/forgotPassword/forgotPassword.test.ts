@@ -1,4 +1,4 @@
-import { passwordNotLongEnough } from "@faas/common";
+import { passwordNotLongEnough } from "@satay/common";
 import * as faker from "faker";
 import * as Redis from "ioredis";
 import { Connection } from "typeorm";

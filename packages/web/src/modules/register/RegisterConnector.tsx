@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import { RegisterController } from "@faas/controller";
+import { RegisterController } from "@satay/controller";
 
 import { RegisterView } from "./ui/RegisterView";
 

@@ -1,4 +1,4 @@
-import { ForgotPasswordController } from "@faas/controller";
+import { ForgotPasswordController } from "@satay/controller";
 import * as React from "react";
 
 import { ForgotPasswordView } from "./ui/ForgotPasswordView";

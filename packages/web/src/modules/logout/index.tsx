@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { LogoutController } from "@faas/controller";
+import { LogoutController } from "@satay/controller";
 import CallLogout from "./CallLogout";
 import { RouteComponentProps } from "react-router";
 

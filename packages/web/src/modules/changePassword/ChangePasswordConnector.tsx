@@ -1,4 +1,4 @@
-import { ChangePasswordController } from "@faas/controller";
+import { ChangePasswordController } from "@satay/controller";
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 

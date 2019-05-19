@@ -1,14 +1,10 @@
-import { AuthRoute } from "@faas/controller";
 import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { ApplicationConnector } from "../modules/application/ApplicationConnector";
 import { ChangePasswordConnector } from "../modules/changePassword/ChangePasswordConnector";
 import { ForgotPasswordConnector } from "../modules/forgotPassword/ForgotPasswordConnector";
 import { LoginConnector } from "../modules/login/LoginConnector";
 import { Logout } from "../modules/logout";
-import { OverviewConnector } from "../modules/overview/OverviewConnector";
-import { ProjectConnector } from "../modules/project/ProjectConnector";
 import { RegisterConnector } from "../modules/register/RegisterConnector";
 import { TextPage } from "../modules/TextPage";
 
@@ -28,16 +24,6 @@ const Routes = () => (
         exact
         path="/change-password/:key"
         component={ChangePasswordConnector}
-      />
-      <AuthRoute
-        path="/overview/:overviewAction?"
-        component={OverviewConnector}
-      />
-      <AuthRoute path="/projects/:serviceName" component={ProjectConnector} />
-      <AuthRoute
-        exact
-        path="/app/:serviceName"
-        component={ApplicationConnector}
       />
     </Switch>
   </BrowserRouter>

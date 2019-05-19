@@ -1,5 +1,5 @@
-import { loginSchema } from "@faas/common";
-import { NormalizedErrorMap } from "@faas/controller";
+import { loginSchema } from "@satay/common";
+import { NormalizedErrorMap } from "@satay/controller";
 import { Button, Form as AntForm, Icon } from "antd";
 import { Field, Form, FormikProps, withFormik } from "formik";
 import React from "react";

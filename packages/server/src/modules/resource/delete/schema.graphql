@@ -1,8 +1,0 @@
-input DeleteResourceInput {
-  serviceName: String!
-  id: String!
-}
-
-type Mutation {
-  deleteResource(input: DeleteResourceInput!): Boolean!
-}

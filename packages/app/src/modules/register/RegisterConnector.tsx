@@ -1,4 +1,4 @@
-import { RegisterController } from "@faas/controller";
+import { RegisterController } from "@satay/controller";
 import * as React from "react";
 
 import { RegisterView } from "./ui/RegisterView";

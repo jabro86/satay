@@ -1,4 +1,4 @@
-import { validUserSchema } from "@faas/common";
+import { validUserSchema } from "@satay/common";
 
 import { User } from "../../../entity/User";
 import { ResolverMap } from "../../../types/graphql-utils";

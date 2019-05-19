@@ -1,1 +1,1 @@
-export const SID_KEY = "faas-sid";
+export const SID_KEY = "satay-sid";

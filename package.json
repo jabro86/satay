@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "clean:node_modules": "rm -rf node_modules && rm -rf packages/**/node_modules",
-    "build:server": "lerna run build --scope={@faas/common,@faas/server}",
-    "build:web": "lerna run build --scope={@faas/common,@faas/controller,@faas/ra-data-graphql,@faas/ra-data-prisma,@faas/web}"
+    "build:server": "lerna run build --scope={@satay/common,@satay/server}",
+    "build:web": "lerna run build --scope={@satay/common,@satay/controller,@satay/web}"
   },
   "workspaces": {
     "packages": [
@@ -20,7 +20,7 @@
       "**/styled-components/**"
     ]
   },
-  "name": "faas",
+  "name": "satay",
   "devDependencies": {
     "lerna": "3.13.1"
   }

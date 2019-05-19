@@ -1,5 +1,5 @@
-import { validUserSchema } from "@faas/common";
-import { NormalizedErrorMap } from "@faas/controller";
+import { validUserSchema } from "@satay/common";
+import { NormalizedErrorMap } from "@satay/controller";
 import { Field, FormikProps, withFormik } from "formik";
 import * as React from "react";
 import { View } from "react-native";

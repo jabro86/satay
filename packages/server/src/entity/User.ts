@@ -1,13 +1,11 @@
 import * as bcrypt from "bcryptjs";
 import {
-  Entity,
-  Column,
   BaseEntity,
-  PrimaryGeneratedColumn,
   BeforeInsert,
-  OneToMany
+  Column,
+  Entity,
+  PrimaryGeneratedColumn
 } from "typeorm";
-import { Project } from "./Project";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -23,9 +21,6 @@ export class User extends BaseEntity {
 
   @Column("boolean", { default: false })
   forgotPasswordLocked: boolean;
-
-  @OneToMany(() => Project, project => project.user)
-  projects: Project[];
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {
