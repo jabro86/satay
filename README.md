@@ -1,6 +1,6 @@
 # satay
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b014bcab-d716-46a2-879d-34e6a95ff5b9/deploy-status)](https://app.netlify.com/sites/u96/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b014bcab-d716-46a2-879d-34e6a95ff5b9/deploy-status)](https://app.netlify.com/sites/satay/deploys)
 
 ## Web client
 

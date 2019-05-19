@@ -15,7 +15,7 @@ export const sendConfirmationEmail = async (recipient: string, url: string) => {
     from: "test@example.com",
     subject: "Please confirm your registration",
     text: `Confirm your registration: ${url}`,
-    html: `<strong>Welcome to U96!</strong>
+    html: `<strong>Welcome to Satay!</strong>
     Confirm your registration by clicking <a href="${url}">here</a>.`
   });
 
