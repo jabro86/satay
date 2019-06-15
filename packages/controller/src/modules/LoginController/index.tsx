@@ -7,9 +7,9 @@ import {
   WithApolloClient
 } from "react-apollo";
 
+import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
 import { NormalizedErrorMap } from "../../types/NormalizedErrorMap";
 import { normalizeErrors } from "../../utils/normalizeErrors";
-import { LoginMutationVariables, LoginMutation } from "../../schemaTypes";
 
 interface Props {
   children: (data: {
@@ -24,30 +24,23 @@ class C extends React.PureComponent<
   ChildProps<WithApolloClient<Props>, LoginMutation, LoginMutationVariables>
 > {
   submit = async (values: LoginMutationVariables) => {
-    if (!this.props.mutate) {
-      throw new Error("Cannot find mutate on LoginController props");
+    console.log(values);
+    if (this.props.mutate === undefined) {
+      throw new Error("No mutate function.");
     }
-
-    const response = await this.props.mutate({
+    const {
+      data: { login }
+    }: any = await this.props.mutate({
       variables: values
     });
+    console.log("response: ", login);
 
-    if (response !== undefined) {
-      const { data } = response;
-      if (data && data.login) {
-        const { errors, sessionId } = data.login;
-
-        if (errors) {
-          return normalizeErrors(errors);
-        }
-
-        if (this.props.onSessionId && sessionId) {
-          this.props.onSessionId(sessionId);
-        }
-      }
+    if (login) {
+      // show errors
+      // [{path: 'email': message: 'inval...'}]
+      // {email: 'invalid....'}
+      return normalizeErrors(login);
     }
-
-    this.props.client.resetStore();
 
     return null;
   };
@@ -56,15 +49,11 @@ class C extends React.PureComponent<
     return this.props.children({ submit: this.submit });
   }
 }
-
 const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      errors {
-        path
-        message
-      }
-      sessionId
+      path
+      message
     }
   }
 `;

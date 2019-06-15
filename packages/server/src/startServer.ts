@@ -4,10 +4,9 @@ import "reflect-metadata";
 import * as connectRedis from "connect-redis";
 import * as RateLimit from "express-rate-limit";
 import * as session from "express-session";
+import { applyMiddleware } from "graphql-middleware";
 import { GraphQLServer } from "graphql-yoga";
 import * as RateLimitRedisStore from "rate-limit-redis";
-import { applyMiddleware } from "graphql-middleware";
-import { GraphQLSchema } from "graphql";
 
 import { redisSessionPrefix } from "./constants";
 import { redis } from "./redis";
@@ -25,7 +24,7 @@ export const startServer = async () => {
     await redis.flushall();
   }
 
-  const schema = genSchema() as GraphQLSchema;
+  const schema: any = genSchema();
   applyMiddleware(schema);
 
   const server = new GraphQLServer({

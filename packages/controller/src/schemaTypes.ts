@@ -62,20 +62,14 @@ export interface SendForgotPasswordEmailMutationVariables {
 // GraphQL mutation operation: LoginMutation
 // ====================================================
 
-export interface LoginMutation_login_errors {
+export interface LoginMutation_login {
   __typename: "Error";
   path: string;
   message: string;
 }
 
-export interface LoginMutation_login {
-  __typename: "LoginResponse";
-  errors: LoginMutation_login_errors[] | null;
-  sessionId: string | null;
-}
-
 export interface LoginMutation {
-  login: LoginMutation_login;
+  login: LoginMutation_login[] | null;
 }
 
 export interface LoginMutationVariables {

@@ -2,7 +2,7 @@ import * as sgMail from "@sendgrid/mail";
 
 import { SENDGRID_API_KEY } from "./config";
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV !== "test") {
   if (SENDGRID_API_KEY === undefined) {
     throw Error("No API key found for send grid mail service!");
   }

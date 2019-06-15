@@ -30,7 +30,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  conn.close();
+  await conn.close();
 });
 
 describe("forgot password", () => {
@@ -81,7 +81,7 @@ describe("forgot password", () => {
       data: {
         forgotPasswordChange: [
           {
-            path: "key",
+            path: "newPassword",
             message: expiredKeyError
           }
         ]

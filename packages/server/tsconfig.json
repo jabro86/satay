@@ -22,5 +22,5 @@
     "skipLibCheck": true
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "settings.ts"]
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "settings.ts", "schema.d.ts", "rate-limit-redis.d.ts", "merge-graphql-schemas.d.ts", "graphql-utils.ts"]
 }

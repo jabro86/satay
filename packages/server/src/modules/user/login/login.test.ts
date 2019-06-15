@@ -17,7 +17,7 @@ beforeAll(async () => {
   conn = await createTestConn();
 });
 afterAll(async () => {
-  conn.close();
+  await conn.close();
 });
 
 const loginExpectError = async (e: string, p: string, errMsg: string) => {

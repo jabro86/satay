@@ -22,7 +22,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  conn.close();
+  await conn.close();
 });
 
 describe("logout", () => {
