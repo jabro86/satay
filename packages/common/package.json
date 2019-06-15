@@ -11,7 +11,7 @@
     "yup": "0.27.0"
   },
   "devDependencies": {
-    "@types/yup": "0.26.12",
+    "@types/yup": "0.26.16",
     "rimraf": "2.6.3",
     "tslint": "5.17.0",
     "tslint-config-prettier": "1.18.0",
