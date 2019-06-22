@@ -10,6 +10,8 @@
       "packages/*"
     ],
     "nohoist": [
+      "**/@types/jest",
+      "**/@types/jest/**",
       "**/react-native",
       "**/react-native/**",
       "**/react-native-elements",

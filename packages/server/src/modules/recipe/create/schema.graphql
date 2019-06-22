@@ -1,0 +1,10 @@
+input CreateRecipeInput {
+  name: String!
+  description: String!
+  ingredients: [String!]!
+  steps: [String!]!
+}
+
+type Mutation {
+  createRecipe(input: CreateRecipeInput!): Boolean!
+}
