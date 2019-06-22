@@ -19,8 +19,9 @@
     "allowSyntheticDefaultImports": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true
-  },
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "./src/types"]
+  },  
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "settings.ts", "schema.d.ts", "rate-limit-redis.d.ts", "merge-graphql-schemas.d.ts", "graphql-utils.ts"]
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }
