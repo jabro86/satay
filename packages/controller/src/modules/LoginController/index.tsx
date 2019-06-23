@@ -1,11 +1,6 @@
 import gql from "graphql-tag";
 import * as React from "react";
-import {
-  ChildProps,
-  graphql,
-  withApollo,
-  WithApolloClient
-} from "react-apollo";
+import { ChildMutateProps, graphql } from "react-apollo";
 
 import { LoginMutation, LoginMutationVariables } from "../../schemaTypes";
 import { NormalizedErrorMap } from "../../types/NormalizedErrorMap";
@@ -21,25 +16,31 @@ interface Props {
 }
 
 class C extends React.PureComponent<
-  ChildProps<WithApolloClient<Props>, LoginMutation, LoginMutationVariables>
+  ChildMutateProps<Props, LoginMutation, LoginMutationVariables>
 > {
   submit = async (values: LoginMutationVariables) => {
-    console.log(values);
     if (this.props.mutate === undefined) {
       throw new Error("No mutate function.");
     }
-    const {
-      data: { login }
-    }: any = await this.props.mutate({
+    const response = await this.props.mutate({
       variables: values
     });
-    console.log("response: ", login);
 
-    if (login) {
-      // show errors
-      // [{path: 'email': message: 'inval...'}]
-      // {email: 'invalid....'}
-      return normalizeErrors(login);
+    if (response) {
+      const { data } = response;
+      if (data && data.login) {
+        const {
+          login: { errors, sessionId }
+        } = data;
+
+        if (errors) {
+          return normalizeErrors(errors);
+        }
+
+        if (sessionId && this.props.onSessionId) {
+          this.props.onSessionId(sessionId);
+        }
+      }
     }
 
     return null;
@@ -52,8 +53,11 @@ class C extends React.PureComponent<
 const loginMutation = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      path
-      message
+      errors {
+        path
+        message
+      }
+      sessionId
     }
   }
 `;
@@ -61,5 +65,6 @@ const loginMutation = gql`
 export const LoginController = graphql<
   Props,
   LoginMutation,
-  LoginMutationVariables
->(loginMutation)(withApollo(C));
+  LoginMutationVariables,
+  ChildMutateProps<Props, LoginMutation, LoginMutationVariables>
+>(loginMutation)(C);

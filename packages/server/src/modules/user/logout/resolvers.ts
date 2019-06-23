@@ -3,11 +3,11 @@ import { removeAllUsersSessions } from "../../../utils/removeAllUsersSessions";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    logout: async (_, __, { session, redis }) => {
+    logout: async (_, __, { session, redis }: any) => {
       const { userId } = session;
       if (userId) {
         removeAllUsersSessions(userId, redis);
-        session.destroy(err => {
+        session.destroy((err: any) => {
           if (err) {
             console.log(err);
           }
