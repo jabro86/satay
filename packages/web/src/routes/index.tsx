@@ -1,3 +1,4 @@
+import { AuthRoute } from "@satay/controller";
 import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -5,6 +6,7 @@ import { ChangePasswordConnector } from "../modules/changePassword/ChangePasswor
 import { ForgotPasswordConnector } from "../modules/forgotPassword/ForgotPasswordConnector";
 import { LoginConnector } from "../modules/login/LoginConnector";
 import { Logout } from "../modules/logout";
+import { CreateRecipeConnector } from "../modules/recipe/create/CreateRecipeConnector";
 import { RegisterConnector } from "../modules/register/RegisterConnector";
 import { TextPage } from "../modules/TextPage";
 
@@ -25,6 +27,7 @@ const Routes = () => (
         path="/change-password/:key"
         component={ChangePasswordConnector}
       />
+      <AuthRoute path="/create-recipe" component={CreateRecipeConnector} />
     </Switch>
   </BrowserRouter>
 );

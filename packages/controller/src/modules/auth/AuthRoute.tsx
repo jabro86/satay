@@ -11,9 +11,9 @@ interface Props extends RouteProps {
 
 export class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
   renderRoute = (routeProps: RouteComponentProps<{}>) => {
-    const { data, component, additionalProps } = this.props;
+    const { data, component: Component, additionalProps } = this.props;
 
-    if (!data || data.loading) {
+    if (!data || data.loading || !Component) {
       return null;
     }
 
@@ -29,7 +29,6 @@ export class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
       );
     }
 
-    const Component: any = component;
     return <Component {...routeProps} {...additionalProps} />;
   };
 

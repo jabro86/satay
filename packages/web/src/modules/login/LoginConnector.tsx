@@ -1,8 +1,9 @@
+import { LoginController } from "@satay/controller";
 import React from "react";
+import { RouteComponentProps } from "react-router";
 
 import { LoginView } from "./ui/LoginView";
-import { LoginController } from "@satay/controller";
-import { RouteComponentProps } from "react-router";
+
 export class LoginConnector extends React.PureComponent<
   RouteComponentProps<{}>
 > {
