@@ -47,12 +47,14 @@ describe("forgot password", () => {
     // make sure you can't login to locked account
     expect(await client.login(email, password)).toEqual({
       data: {
-        login: [
-          {
-            path: "email",
-            message: forgotPasswordLockedError
-          }
-        ]
+        login: {
+          errors: [
+            {
+              path: "email",
+              message: forgotPasswordLockedError
+            }
+          ]
+        }
       }
     });
 
@@ -90,7 +92,7 @@ describe("forgot password", () => {
 
     expect(await client.login(email, newPassword)).toEqual({
       data: {
-        login: null
+        login: { errors: null }
       }
     });
   });
