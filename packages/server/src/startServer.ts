@@ -9,6 +9,7 @@ import { GraphQLServer } from "graphql-yoga";
 import * as RateLimitRedisStore from "rate-limit-redis";
 
 import { redisSessionPrefix } from "./constants";
+import { middleware } from "./middleware";
 import { redis } from "./redis";
 import { confirmEmail } from "./routes/confirmEmail";
 import { createTestConn } from "./testUtils/createTestConn";
@@ -24,8 +25,8 @@ export const startServer = async () => {
     await redis.flushall();
   }
 
-  const schema: any = genSchema();
-  applyMiddleware(schema);
+  const schema = genSchema();
+  applyMiddleware(schema, middleware);
 
   const server = new GraphQLServer({
     schema,

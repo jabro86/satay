@@ -4,7 +4,11 @@ import { ResolverMap } from "../../../types/graphql-utils";
 export const resolvers: ResolverMap = {
   Mutation: {
     createRecipe: async (_, { input }, { session }) => {
-      console.log("TCL: session", session)
+      if (!session.userId) {
+        // user is not logged in
+        throw new Error("not authenticated");
+      }
+
       await Recipe.create({
         ...input,
         pictureUrl: "",
