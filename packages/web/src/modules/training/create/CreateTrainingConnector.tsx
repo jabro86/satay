@@ -9,8 +9,6 @@ import { Page2 } from "./ui/Page2";
 interface FormValues {
   name: string;
   description: string;
-  ingredients: string[];
-  steps: string[];
 }
 
 const pages = [<Page1 />, <Page2 />];
@@ -19,7 +17,7 @@ interface State {
   page: number;
 }
 
-export class CreateRecipeConnector extends PureComponent<
+export class CreateTrainingConnector extends PureComponent<
   RouteComponentProps<{}>,
   State
 > {
@@ -40,9 +38,7 @@ export class CreateRecipeConnector extends PureComponent<
       <Formik<FormValues>
         initialValues={{
           name: "",
-          description: "",
-          ingredients: [],
-          steps: []
+          description: ""
         }}
         onSubmit={this.submit}
       >

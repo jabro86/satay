@@ -11,7 +11,7 @@ export const resolvers: ResolverMap = {
 
       await Training.create({
         ...input,
-        pictureUrl: "",
+        sets: [],
         userId: session.userId
       }).save();
 

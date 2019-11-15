@@ -2,13 +2,12 @@ import {
   BaseEntity,
   Column,
   Entity,
+  ManyToMany,
   ManyToOne,
-  PrimaryGeneratedColumn,
-  ManyToMany
+  PrimaryGeneratedColumn
 } from "typeorm";
-
+import { Excercise } from "./Excercise";
 import { User } from "./User";
-import { Set } from "./Set";
 
 @Entity("trainings")
 export class Training extends BaseEntity {
@@ -27,8 +26,8 @@ export class Training extends BaseEntity {
   user: User;
 
   @ManyToMany(
-    () => Set,
-    set => set.trainings
+    () => Excercise,
+    excercise => excercise.trainings
   )
-  sets: Set[];
+  excercise: Excercise[];
 }

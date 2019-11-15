@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn
 } from "typeorm";
-import { Set } from "./Set";
+import { Training } from "./Training";
 
 @Entity("excercises")
 export class Excercise extends BaseEntity {
@@ -20,8 +20,8 @@ export class Excercise extends BaseEntity {
   @Column("text") videoUrl: string;
 
   @OneToMany(
-    () => Set,
-    set => set.excercise
+    () => Training,
+    training => training.excercise
   )
-  sets: Set[];
+  trainings: Training[];
 }
