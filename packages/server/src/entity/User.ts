@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn
 } from "typeorm";
 
-import { Recipe } from "./Recipe";
+import { Training } from "./Training";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -25,8 +25,11 @@ export class User extends BaseEntity {
   @Column("boolean", { default: false })
   forgotPasswordLocked: boolean;
 
-  @OneToMany(() => Recipe, recipe => recipe.user)
-  recipes: Recipe[];
+  @OneToMany(
+    () => Training,
+    training => training.user
+  )
+  trainings: Training[];
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {

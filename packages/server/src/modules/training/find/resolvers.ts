@@ -1,10 +1,10 @@
-import { Recipe } from "../../../entity/Recipe";
+import { Training } from "../../../entity/Training";
 import { ResolverMap } from "../../../types/graphql-utils";
 
 export const resolvers: ResolverMap = {
   Query: {
-    findRecipes: async () => {
-      return Recipe.find();
+    findTrainings: async () => {
+      return Training.find();
     }
   }
 };

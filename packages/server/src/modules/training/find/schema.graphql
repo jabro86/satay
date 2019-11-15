@@ -1,0 +1,9 @@
+type Training {
+  id: ID!
+  name: String!
+  description: String!
+}
+
+type Query {
+  findTrainings: [Training!]!
+}

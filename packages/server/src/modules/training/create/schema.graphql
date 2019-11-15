@@ -1,0 +1,8 @@
+input CreateTrainingInput {
+  name: String!
+  description: String!
+}
+
+type Mutation {
+  createTraining(input: CreateTrainingInput!): Boolean!
+}

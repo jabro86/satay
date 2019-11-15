@@ -1,15 +1,15 @@
-import { Recipe } from "../../../entity/Recipe";
+import { Training } from "../../../entity/Training";
 import { ResolverMap } from "../../../types/graphql-utils";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    createRecipe: async (_, { input }, { session }) => {
+    createTraining: async (_, { input }, { session }) => {
       if (!session.userId) {
         // user is not logged in
         throw new Error("not authenticated");
       }
 
-      await Recipe.create({
+      await Training.create({
         ...input,
         pictureUrl: "",
         userId: session.userId

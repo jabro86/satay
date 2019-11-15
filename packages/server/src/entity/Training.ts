@@ -3,27 +3,32 @@ import {
   Column,
   Entity,
   ManyToOne,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
+  ManyToMany
 } from "typeorm";
 
 import { User } from "./User";
+import { Set } from "./Set";
 
-@Entity("recipes")
-export class Recipe extends BaseEntity {
+@Entity("trainings")
+export class Training extends BaseEntity {
   @PrimaryGeneratedColumn("uuid") id: string;
 
   @Column("varchar", { length: 255 }) name: string;
 
-  @Column("text") pictureUrl: string;
-
   @Column("text") description: string;
-
-  @Column("text", { array: true }) ingredients: string[];
-
-  @Column("text", { array: true }) steps: string[];
 
   @Column("uuid") userId: string;
 
-  @ManyToOne(() => User, user => user.recipes)
+  @ManyToOne(
+    () => User,
+    user => user.trainings
+  )
   user: User;
+
+  @ManyToMany(
+    () => Set,
+    set => set.trainings
+  )
+  sets: Set[];
 }

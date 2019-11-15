@@ -22,18 +22,15 @@ declare namespace GQL {
 
   interface IQuery {
     __typename: 'Query';
-    findRecipes: Array<IRecipe>;
+    findTrainings: Array<ITraining>;
     me: IUser | null;
   }
 
-  interface IRecipe {
-    __typename: 'Recipe';
+  interface ITraining {
+    __typename: 'Training';
     id: string;
     name: string;
     description: string;
-    pictureUrl: string;
-    ingredients: Array<string>;
-    steps: Array<string>;
   }
 
   interface IUser {
@@ -44,8 +41,8 @@ declare namespace GQL {
 
   interface IMutation {
     __typename: 'Mutation';
-    createRecipe: boolean;
-    deleteRecipe: boolean;
+    createTraining: boolean;
+    deleteTraining: boolean;
     sendForgotPasswordEmail: boolean | null;
     forgotPasswordChange: Array<IError> | null;
     login: ILoginResponse;
@@ -53,11 +50,11 @@ declare namespace GQL {
     register: Array<IError> | null;
   }
 
-  interface ICreateRecipeOnMutationArguments {
-    input: ICreateRecipeInput;
+  interface ICreateTrainingOnMutationArguments {
+    input: ICreateTrainingInput;
   }
 
-  interface IDeleteRecipeOnMutationArguments {
+  interface IDeleteTrainingOnMutationArguments {
     id: string;
   }
 
@@ -80,11 +77,9 @@ declare namespace GQL {
     password: string;
   }
 
-  interface ICreateRecipeInput {
+  interface ICreateTrainingInput {
     name: string;
     description: string;
-    ingredients: Array<string>;
-    steps: Array<string>;
   }
 
   interface IError {
