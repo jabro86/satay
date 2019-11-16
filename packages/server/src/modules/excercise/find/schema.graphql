@@ -1,0 +1,9 @@
+type Excercise {
+  id: ID!
+  title: String!
+  description: String!
+}
+
+type Query {
+  findExcercise: [Excercise!]!
+}

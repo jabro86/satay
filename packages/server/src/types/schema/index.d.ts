@@ -22,8 +22,16 @@ declare namespace GQL {
 
   interface IQuery {
     __typename: 'Query';
+    findExcerciseInfos: Array<IExcerciseInfo>;
     findTrainings: Array<ITraining>;
     me: IUser | null;
+  }
+
+  interface IExcerciseInfo {
+    __typename: 'ExcerciseInfo';
+    id: string;
+    title: string;
+    description: string;
   }
 
   interface ITraining {
@@ -41,6 +49,8 @@ declare namespace GQL {
 
   interface IMutation {
     __typename: 'Mutation';
+    createExcerciseInfo: boolean;
+    deleteExcerciseInfo: boolean;
     createTraining: boolean;
     deleteTraining: boolean;
     sendForgotPasswordEmail: boolean | null;
@@ -48,6 +58,14 @@ declare namespace GQL {
     login: ILoginResponse;
     logout: boolean | null;
     register: Array<IError> | null;
+  }
+
+  interface ICreateExcerciseInfoOnMutationArguments {
+    input: ICreateExcerciseInfoInput;
+  }
+
+  interface IDeleteExcerciseInfoOnMutationArguments {
+    id: string;
   }
 
   interface ICreateTrainingOnMutationArguments {
@@ -75,6 +93,17 @@ declare namespace GQL {
   interface IRegisterOnMutationArguments {
     email: string;
     password: string;
+  }
+
+  interface ICreateExcerciseInfoInput {
+    title: string;
+    description: string;
+    pictureUrl: string;
+    videoUrlExcercise: string;
+    howToExcercise: Array<string>;
+    howToBreath: string;
+    pictureUrlBody: string;
+    listInvolvedMuscles: Array<string>;
   }
 
   interface ICreateTrainingInput {

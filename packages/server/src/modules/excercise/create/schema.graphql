@@ -1,0 +1,14 @@
+input CreateExcerciseInput {
+  title: String!
+  description: String!
+  pictureUrl: String!
+  videoUrlExcercise: String!
+  howToExcercise: [String!]!
+  howToBreath: String!
+  pictureUrlBody: String!
+  listInvolvedMuscles: [String!]!
+}
+
+type Mutation {
+  createExcercise(input: CreateExcerciseInput!): Boolean!
+}

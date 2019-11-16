@@ -8,15 +8,15 @@ import {
 import { User } from "./User";
 
 export interface TrainingSet {
-  repitions: number;
-  weight: number;
-  weightDone: number;
-  repitionsDone: number;
+  expectedRepitions: number;
+  actualRepitions: number;
+  expectedWeight: number;
+  actualWeight: number;
   breakAfterInSec: number;
 }
 
-export interface Excercise {
-  excerciseInfoId: string;
+export interface ExcerciseWithSets {
+  excerciseId: string;
   type: string;
   notes: string;
   sets: TrainingSet[];
@@ -25,7 +25,7 @@ export interface Excercise {
 export interface Workout {
   title: string;
   status: string;
-  excercises: Excercise[];
+  excercises: ExcerciseWithSets[];
 }
 
 export interface Week {
