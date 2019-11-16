@@ -11,7 +11,6 @@ export const resolvers: ResolverMap = {
 
       await Training.create({
         ...input,
-        sets: [],
         userId: session.userId
       }).save();
 

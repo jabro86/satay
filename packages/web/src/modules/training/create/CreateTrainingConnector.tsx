@@ -48,9 +48,11 @@ export class CreateTrainingConnector extends PureComponent<
               {pages[this.state.page]}
               <AntForm.Item>
                 {this.state.page === pages.length - 1 ? (
-                  <Button type="primary" htmlType="submit">
-                    Create Recipe
-                  </Button>
+                  <div>
+                    <Button type="primary" htmlType="submit">
+                      Create Recipe
+                    </Button>
+                  </div>
                 ) : (
                   <Button type="primary" onClick={this.nextPage}>
                     Next Page

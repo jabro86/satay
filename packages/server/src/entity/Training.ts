@@ -2,12 +2,39 @@ import {
   BaseEntity,
   Column,
   Entity,
-  ManyToMany,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn
 } from "typeorm";
-import { Excercise } from "./Excercise";
 import { User } from "./User";
+
+export interface TrainingSet {
+  repitions: number;
+  weight: number;
+  weightDone: number;
+  repitionsDone: number;
+  breakAfterInSec: number;
+}
+
+export interface Excercise {
+  excerciseInfoId: string;
+  type: string;
+  notes: string;
+  sets: TrainingSet[];
+}
+
+export interface Workout {
+  title: string;
+  status: string;
+  excercises: Excercise[];
+}
+
+export interface Week {
+  workouts: Workout[];
+}
+
+export interface Plan {
+  weeks: Week[];
+}
 
 @Entity("trainings")
 export class Training extends BaseEntity {
@@ -19,15 +46,13 @@ export class Training extends BaseEntity {
 
   @Column("uuid") userId: string;
 
-  @ManyToOne(
+  @Column("date") startDate: Date;
+
+  @Column("simple-json") plan: Plan;
+
+  @OneToOne(
     () => User,
-    user => user.trainings
+    user => user.training
   )
   user: User;
-
-  @ManyToMany(
-    () => Excercise,
-    excercise => excercise.trainings
-  )
-  excercise: Excercise[];
 }
