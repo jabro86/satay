@@ -3,38 +3,11 @@ import {
   Column,
   Entity,
   OneToOne,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
+  ManyToOne
 } from "typeorm";
 import { User } from "./User";
-
-export interface TrainingSet {
-  expectedRepitions: number;
-  actualRepitions: number;
-  expectedWeight: number;
-  actualWeight: number;
-  breakAfterInSec: number;
-}
-
-export interface ExcerciseWithSets {
-  excerciseId: string;
-  type: string;
-  notes: string;
-  sets: TrainingSet[];
-}
-
-export interface Workout {
-  title: string;
-  status: string;
-  excercises: ExcerciseWithSets[];
-}
-
-export interface Week {
-  workouts: Workout[];
-}
-
-export interface Plan {
-  weeks: Week[];
-}
+import { TrainingsPlan } from "./TrainingsPlan";
 
 @Entity("trainings")
 export class Training extends BaseEntity {
@@ -48,7 +21,11 @@ export class Training extends BaseEntity {
 
   @Column("date") startDate: Date;
 
-  @Column("simple-json") plan: Plan;
+  @ManyToOne(
+    () => TrainingsPlan,
+    trainingsPlan => trainingsPlan.trainings
+  )
+  trainingsPlan: TrainingsPlan;
 
   @OneToOne(
     () => User,

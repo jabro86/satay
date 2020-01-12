@@ -8,6 +8,7 @@ import { Logout } from "../modules/logout";
 import { RegisterConnector } from "../modules/register/RegisterConnector";
 import { TextPage } from "../modules/TextPage";
 import { CreateTrainingConnector } from "../modules/training/create/CreateTrainingConnector";
+import { Home } from "../modules/home/";
 
 const Routes = () => (
   <BrowserRouter>
@@ -27,6 +28,7 @@ const Routes = () => (
         component={ChangePasswordConnector}
       />
       <AuthRoute path="/create-training" component={CreateTrainingConnector} />
+      <AuthRoute path="/home" component={Home} />
     </Switch>
   </BrowserRouter>
 );
