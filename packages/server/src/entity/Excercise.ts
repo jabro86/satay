@@ -8,15 +8,15 @@ export class Excercise extends BaseEntity {
 
   @Column("text") description: string;
 
-  @Column("text") pictureUrl: string;
+  @Column("text") pictureUrlExcercise: string;
 
   @Column("text") videoUrlExcercise: string;
 
-  @Column("text") howToExcercise: string[];
+  @Column("text") stepsExcercise: string[];
 
-  @Column("text") howToBreath: string;
+  @Column("text") breathing: string;
 
-  @Column("text") pictureUrlBody: string;
+  @Column("text") pictureUrlMuscles: string;
 
   @Column("text") listInvolvedMuscles: string[];
 }

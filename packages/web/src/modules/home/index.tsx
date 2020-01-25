@@ -1,9 +1,12 @@
-import { Layout, Menu, Icon } from "antd";
+import { AuthRoute } from "@satay/controller";
+import { Icon, Layout, Menu, Button } from "antd";
 import React from "react";
+import { Switch, Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
 
 const { Header, Sider, Content } = Layout;
 
-export class Home extends React.Component {
+export class Home extends React.Component<RouteComponentProps> {
   state = {
     collapsed: false
   };
@@ -15,24 +18,44 @@ export class Home extends React.Component {
   };
 
   render() {
+    const {
+      match: { path },
+      history,
+      location: { pathname }
+    } = this.props;
+    // Menu path is in the form of ["h", "excercises", "new"]
+    const menuPath = pathname.split("/").filter(name => name !== "");
+    const selectedMainMenu = menuPath.length > 1 ? menuPath[1] : undefined;
     return (
       <Layout style={{ height: "100%" }}>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+          theme="light"
+        >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
+          <Menu
+            theme="light"
+            mode="inline"
+            defaultSelectedKeys={selectedMainMenu ? [selectedMainMenu] : []}
+            onSelect={({ key }) => {
+              history.push(`${path}/${key}`);
+            }}
+          >
+            <Menu.Item key="training">
               <Icon type="fire" />
               <span>Training</span>
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="plans">
               <Icon type="profile" />
               <span>Pläne</span>
             </Menu.Item>
-            <Menu.Item key="3">
+            <Menu.Item key="excercises">
               <Icon type="filter" />
               <span>Übungen</span>
             </Menu.Item>
-            <Menu.Item key="4">
+            <Menu.Item key="settings">
               <Icon type="setting" />
               <span>Einstellungen</span>
             </Menu.Item>
@@ -51,13 +74,10 @@ export class Home extends React.Component {
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
-                  flexGrow: 1   
+                  flexGrow: 1
                 }}
               >
-                <Menu
-                  mode="horizontal"
-                  style={{ lineHeight: "64px" }}
-                >
+                <Menu mode="horizontal" style={{ lineHeight: "64px" }}>
                   <Menu.Item key="1">
                     <Icon type="user" />
                     <span>User</span>
@@ -74,7 +94,30 @@ export class Home extends React.Component {
               minHeight: 280
             }}
           >
-            Content
+            <Switch>
+              <AuthRoute
+                exact
+                path={`${this.props.match.path}`}
+                component={() => <h1>Willkommen</h1>}
+              />
+              <AuthRoute
+                exact
+                path={`${this.props.match.path}/excercises`}
+                component={() => (
+                  <div>
+                    <h1>Alle Übungen</h1>
+                    <Link to={`${this.props.match.path}/excercises/new`}>
+                      <Button>Neue Übung</Button>
+                    </Link>
+                  </div>
+                )}
+              />
+              <AuthRoute
+                exact
+                path={`${this.props.match.path}/excercises/new`}
+                component={() => <h1>Neue Übung anlegen</h1>}
+              />
+            </Switch>
           </Content>
         </Layout>
       </Layout>

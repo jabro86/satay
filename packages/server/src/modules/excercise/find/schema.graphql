@@ -2,8 +2,14 @@ type Excercise {
   id: ID!
   title: String!
   description: String!
+  pictureUrlExcercise: String!
+  videoUrlExcercise: String!
+  stepsExcercise: [String!]!
+  breathing: String!
+  pictureUrlMuscles: String!
+  listInvolvedMuscles: [String!]!
 }
 
 type Query {
-  findExcercise: [Excercise!]!
+  findExcercises: [Excercise!]!
 }

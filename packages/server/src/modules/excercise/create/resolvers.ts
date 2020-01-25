@@ -11,6 +11,9 @@ export const resolvers: ResolverMap = {
 
       await Excercise.create({
         ...input,
+        pictureUrlExcercise: "",
+        videoUrlExcercise: "",
+        pictureUrlMuscles: "",
         userId: session.userId
       }).save();
 

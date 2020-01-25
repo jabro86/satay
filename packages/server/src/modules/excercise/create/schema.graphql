@@ -1,11 +1,11 @@
 input CreateExcerciseInput {
   title: String!
   description: String!
-  pictureUrl: String!
+  pictureUrlExcercise: String!
   videoUrlExcercise: String!
-  howToExcercise: [String!]!
-  howToBreath: String!
-  pictureUrlBody: String!
+  stepsExcercise: [String!]!
+  breathing: String!
+  pictureUrlMuscles: String!
   listInvolvedMuscles: [String!]!
 }
 

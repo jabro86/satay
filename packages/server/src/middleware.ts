@@ -16,6 +16,8 @@ async function isAuthenticated(
 export const middleware = {
   Mutation: {
     createTraining: isAuthenticated,
-    deleteTraining: isAuthenticated
+    createExcercise: isAuthenticated,
+    deleteTraining: isAuthenticated,
+    deleteExcercise: isAuthenticated
   }
 };
