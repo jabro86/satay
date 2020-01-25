@@ -1,19 +1,19 @@
 import { AuthRoute } from "@satay/controller";
 import * as React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { ChangePasswordConnector } from "../modules/changePassword/ChangePasswordConnector";
 import { ForgotPasswordConnector } from "../modules/forgotPassword/ForgotPasswordConnector";
+import { HomeConnector } from "../modules/home/HomeConnector";
 import { LoginConnector } from "../modules/login/LoginConnector";
 import { Logout } from "../modules/logout";
 import { RegisterConnector } from "../modules/register/RegisterConnector";
 import { TextPage } from "../modules/TextPage";
 import { CreateTrainingConnector } from "../modules/training/create/CreateTrainingConnector";
-import { Home } from "../modules/home/";
 
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <AuthRoute path="/h" component={Home} />
+      <AuthRoute path="/h" component={HomeConnector} />
       <Route path="/m" component={TextPage} />
       <Route exact path="/register" component={RegisterConnector} />
       <Route exact path="/login" component={LoginConnector} />

@@ -1,12 +1,18 @@
 import { AuthRoute } from "@satay/controller";
-import { Icon, Layout, Menu, Button } from "antd";
+import { Icon, Layout, Menu, Button, Dropdown } from "antd";
 import React from "react";
 import { Switch, Link } from "react-router-dom";
 import { RouteComponentProps } from "react-router";
 
 const { Header, Sider, Content } = Layout;
 
-export class Home extends React.Component<RouteComponentProps> {
+interface Props {
+  user: { email: string };
+}
+
+export class Home extends React.Component<
+  Props & Partial<RouteComponentProps>
+> {
   state = {
     collapsed: false
   };
@@ -18,11 +24,9 @@ export class Home extends React.Component<RouteComponentProps> {
   };
 
   render() {
-    const {
-      match: { path },
-      history,
-      location: { pathname }
-    } = this.props;
+    const { match, history, location, user } = this.props;
+    const { path } = match || { path: "" };
+    const { pathname } = location || { pathname: "/" };
     // Menu path is in the form of ["h", "excercises", "new"]
     const menuPath = pathname.split("/").filter(name => name !== "");
     const selectedMainMenu = menuPath.length > 1 ? menuPath[1] : undefined;
@@ -34,13 +38,19 @@ export class Home extends React.Component<RouteComponentProps> {
           collapsed={this.state.collapsed}
           theme="light"
         >
-          <div className="logo" />
+          <div
+            className="logo"
+            onClick={() => {
+              history?.push(path);
+            }}
+            style={{ cursor: "pointer" }}
+          />
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={selectedMainMenu ? [selectedMainMenu] : []}
+            selectedKeys={selectedMainMenu ? [selectedMainMenu] : []}
             onSelect={({ key }) => {
-              history.push(`${path}/${key}`);
+              history?.push(`${path}/${key}`);
             }}
           >
             <Menu.Item key="training">
@@ -77,12 +87,27 @@ export class Home extends React.Component<RouteComponentProps> {
                   flexGrow: 1
                 }}
               >
-                <Menu mode="horizontal" style={{ lineHeight: "64px" }}>
-                  <Menu.Item key="1">
-                    <Icon type="user" />
-                    <span>User</span>
-                  </Menu.Item>
-                </Menu>
+                <div style={{ margin: "0 8px 8px 0" }}>
+                  <Dropdown
+                    overlay={
+                      <Menu
+                        onClick={({ key }) => {
+                          history?.push(`/${key}`);
+                        }}
+                      >
+                        <Menu.Item key="logout">
+                          <Icon type="logout" />
+                          Logout
+                        </Menu.Item>
+                      </Menu>
+                    }
+                  >
+                    <Button>
+                      <span>{user.email}</span>
+                      <Icon type="user" />
+                    </Button>
+                  </Dropdown>
+                </div>
               </div>
             </div>
           </Header>
@@ -96,26 +121,35 @@ export class Home extends React.Component<RouteComponentProps> {
           >
             <Switch>
               <AuthRoute
-                exact
-                path={`${this.props.match.path}`}
-                component={() => <h1>Willkommen</h1>}
+                path={`${path}/training`}
+                component={() => <h1>Aktiver Trainingsplan</h1>}
               />
               <AuthRoute
-                exact
-                path={`${this.props.match.path}/excercises`}
+                path={`${path}/plans`}
+                component={() => <h1>Alle Pläne</h1>}
+              />
+              <AuthRoute
+                path={`${path}/settings`}
+                component={() => <h1>Einstellungen</h1>}
+              />
+              <AuthRoute
+                path={`${path}/excercises/new`}
+                component={() => <h1>Neue Übung anlegen</h1>}
+              />
+              <AuthRoute
+                path={`${path}/excercises`}
                 component={() => (
                   <div>
                     <h1>Alle Übungen</h1>
-                    <Link to={`${this.props.match.path}/excercises/new`}>
+                    <Link to={`${path}/excercises/new`}>
                       <Button>Neue Übung</Button>
                     </Link>
                   </div>
                 )}
               />
               <AuthRoute
-                exact
-                path={`${this.props.match.path}/excercises/new`}
-                component={() => <h1>Neue Übung anlegen</h1>}
+                path={path}
+                component={() => <h1>Willkommen {user.email}!</h1>}
               />
             </Switch>
           </Content>

@@ -15,7 +15,7 @@ export class LoginConnector extends React.PureComponent<
     if (state && state.next) {
       return history.push(state.next);
     }
-    history.push("/home");
+    history.push("/h");
   };
 
   render() {
