@@ -233,9 +233,7 @@ export class Home extends React.Component<
                         padding: 24,
                         minHeight: 280
                       }}
-                    >
-                      {user.email}
-                    </div>
+                    ></div>
                   </>
                 )}
               />

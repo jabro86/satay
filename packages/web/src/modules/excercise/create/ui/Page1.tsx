@@ -5,7 +5,13 @@ import { InputField } from "../../../shared/InputField";
 
 export const Page1 = () => (
   <>
-    <Field name="name" label="Name" component={InputField} />
-    <Field name="description" label="Description" component={InputField} />
+    <Field name="title" label="Name" component={InputField} />
+    <Field
+      name="description"
+      label="Beschreibung"
+      component={InputField}
+      isTextArea
+    />
+    <Field name="pictureUrlExcercise" label="Bild" component={InputField} />
   </>
 );

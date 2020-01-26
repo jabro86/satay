@@ -1,8 +1,8 @@
-import { Form, Input, InputNumber } from "antd";
+import { Form, Select } from "antd";
 import { FieldProps } from "formik";
 import React from "react";
 
-export const InputField: React.SFC<FieldProps<any> & {
+export const TagField: React.SFC<FieldProps<any> & {
   prefix: React.ReactNode;
   label?: string;
   userNumberComponent?: boolean;
@@ -18,12 +18,6 @@ export const InputField: React.SFC<FieldProps<any> & {
 }) => {
   const errorMsg = touched[field.name] && errors[field.name];
 
-  const Comp = userNumberComponent
-    ? InputNumber
-    : isTextArea
-    ? Input.TextArea
-    : Input;
-
   return (
     <Form.Item
       labelCol={{ span: 4 }}
@@ -32,16 +26,14 @@ export const InputField: React.SFC<FieldProps<any> & {
       help={errorMsg}
       validateStatus={(errorMsg && "error") || ""}
     >
-      <Comp
+      <Select
         {...field}
         {...props}
-        onChange={
-          userNumberComponent
-            ? (newValue: unknown) => {
-                setFieldValue(field.name, newValue);
-              }
-            : onChange
-        }
+        mode="tags"
+        style={{ width: "100%" }}
+        onChange={(newValue: unknown) => {
+          setFieldValue(field.name, newValue);
+        }}
       />
     </Form.Item>
   );
