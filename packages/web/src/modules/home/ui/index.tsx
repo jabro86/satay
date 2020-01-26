@@ -1,8 +1,17 @@
 import { AuthRoute } from "@satay/controller";
-import { Icon, Layout, Menu, Button, Dropdown } from "antd";
+import {
+  Button,
+  Dropdown,
+  Icon,
+  Layout,
+  Menu,
+  PageHeader,
+  Breadcrumb
+} from "antd";
 import React from "react";
-import { Switch, Link } from "react-router-dom";
 import { RouteComponentProps } from "react-router";
+import { Link, Switch } from "react-router-dom";
+import { CreateExcerciseConnector } from "../../excercise/create/CreateExcerciseConnector";
 
 const { Header, Sider, Content } = Layout;
 
@@ -111,45 +120,124 @@ export class Home extends React.Component<
               </div>
             </div>
           </Header>
-          <Content
-            style={{
-              margin: "24px 16px",
-              padding: 24,
-              background: "#fff",
-              minHeight: 280
-            }}
-          >
+          <Content>
             <Switch>
               <AuthRoute
                 path={`${path}/training`}
-                component={() => <h1>Aktiver Trainingsplan</h1>}
+                component={() => (
+                  <>
+                    <Breadcrumb style={{ padding: "4px 24px" }}>
+                      <Breadcrumb.Item key="home">
+                        <Link to="/h">Home</Link>
+                      </Breadcrumb.Item>
+                      <Breadcrumb.Item key="training">
+                        <Link to="/h">Training</Link>
+                      </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <PageHeader
+                      style={{ padding: "4px 24px" }}
+                      title="Aktiver Trainingsplan"
+                    />
+                  </>
+                )}
               />
               <AuthRoute
                 path={`${path}/plans`}
-                component={() => <h1>Alle Pläne</h1>}
+                component={() => (
+                  <>
+                    <Breadcrumb style={{ padding: "4px 24px" }}>
+                      <Breadcrumb.Item key="home">
+                        <Link to="/h">Home</Link>
+                      </Breadcrumb.Item>
+                      <Breadcrumb.Item key="plans">
+                        <Link to="/h">Pläne</Link>
+                      </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <PageHeader
+                      style={{ padding: "4px 24px" }}
+                      title="Alle Pläne"
+                    />
+                  </>
+                )}
               />
               <AuthRoute
                 path={`${path}/settings`}
-                component={() => <h1>Einstellungen</h1>}
+                component={() => (
+                  <>
+                    <Breadcrumb style={{ padding: "4px 24px" }}>
+                      <Breadcrumb.Item key="home">
+                        <Link to="/h">Home</Link>
+                      </Breadcrumb.Item>
+                      <Breadcrumb.Item key="settings">
+                        <Link to="/h">Einstellungen</Link>
+                      </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <PageHeader
+                      style={{ padding: "4px 24px" }}
+                      title="Einstellungen"
+                    />
+                  </>
+                )}
               />
               <AuthRoute
                 path={`${path}/excercises/new`}
-                component={() => <h1>Neue Übung anlegen</h1>}
+                component={CreateExcerciseConnector}
               />
               <AuthRoute
                 path={`${path}/excercises`}
                 component={() => (
                   <div>
-                    <h1>Alle Übungen</h1>
-                    <Link to={`${path}/excercises/new`}>
-                      <Button>Neue Übung</Button>
-                    </Link>
+                    <Breadcrumb style={{ padding: "4px 24px" }}>
+                      <Breadcrumb.Item key="home">
+                        <Link to="/h">Home</Link>
+                      </Breadcrumb.Item>
+                      <Breadcrumb.Item key="excercises">
+                        <Link to="/h">Übungen</Link>
+                      </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <PageHeader
+                      style={{ padding: "4px 24px" }}
+                      title="Alle Übungen"
+                    />
+                    <div
+                      style={{
+                        margin: "24px 16px",
+                        padding: 24,
+                        minHeight: 280
+                      }}
+                    >
+                      <Link to={`${path}/excercises/new`}>
+                        <Button>Neue Übung</Button>
+                      </Link>
+                    </div>
                   </div>
                 )}
               />
+
               <AuthRoute
                 path={path}
-                component={() => <h1>Willkommen {user.email}!</h1>}
+                component={() => (
+                  <>
+                    <Breadcrumb style={{ padding: "4px 24px" }}>
+                      <Breadcrumb.Item key="home">
+                        <Link to="/h">Home</Link>
+                      </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <PageHeader
+                      style={{ padding: "4px 24px" }}
+                      title="Willkommen"
+                    />
+                    <div
+                      style={{
+                        margin: "24px 16px",
+                        padding: 24,
+                        minHeight: 280
+                      }}
+                    >
+                      {user.email}
+                    </div>
+                  </>
+                )}
               />
             </Switch>
           </Content>
