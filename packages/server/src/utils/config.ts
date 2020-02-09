@@ -20,8 +20,7 @@ const REDIS_URL = process.env.REDIS_URL;
 const DATABASE_URL = process.env.DATABASE_URL;
 const PORT = process.env.PORT;
 const BACKEND_URL = process.env.BACKEND_URL;
-const PRISMA_URL = process.env.PRISMA_URL;
-const PRISMA_MANAGEMENT_API_SECRET = process.env.PRISMA_MANAGEMENT_API_SECRET;
+
 
 export {
   BACKEND_URL,
@@ -29,7 +28,5 @@ export {
   SENDGRID_API_KEY,
   REDIS_URL,
   DATABASE_URL,
-  PORT,
-  PRISMA_URL,
-  PRISMA_MANAGEMENT_API_SECRET
+  PORT
 };

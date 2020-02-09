@@ -2,11 +2,11 @@ type Excercise {
   id: ID!
   title: String!
   description: String!
-  pictureExcercise: Upload
-  videoExcercise: String!
+  pictureUrlExcercise: Upload
+  videoUrlExcercise: String!
   stepsExcercise: [String!]!
   breathing: String!
-  pictureMuscles: Upload
+  pictureUrlMuscles: Upload
   listInvolvedMuscles: [String!]!
 }
 

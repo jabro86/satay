@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
 import { Page1 } from "./ui/Page1";
 import { Page2 } from "./ui/Page2";
 import { Page3 } from "./ui/Page3";
-import { FileWithPath } from "react-dropzone";
+import { ImageFile } from "react-dropzone";
 
 interface FormValues {
   title: string;
   description: string;
-  pictureExcercise: FileWithPath | null;
+  pictureExcercise: ImageFile | null;
   videoExcercise: string;
   stepsExcercise: string[];
   breathing: string;
-  pictureMuscles: FileWithPath | null;
+  pictureMuscles: ImageFile | null;
   listInvolvedMuscles: string[];
 }
 

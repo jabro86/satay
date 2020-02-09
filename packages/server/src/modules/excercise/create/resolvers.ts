@@ -4,22 +4,28 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { createWriteStream } from "fs";
 
 const storeUpload = async ({
-  stream
+  createReadStream,
+  filename
 }: any): Promise<{ id: string; path: string }> => {
   const id = shortid.generate();
   const path = `ìmages/${id}`;
 
+  const readStream = createReadStream(filename);
   return new Promise((resolve, reject) =>
-    stream
+    readStream
       .pipe(createWriteStream(path))
       .on("finish", () => resolve({ id, path }))
-      .on("error", reject)
+      .on("error", (error: any) => {
+        console.log("error", error);
+        reject(error);
+      })
   );
 };
 
 const processUpload = async (upload: any) => {
-  const { stream, filename } = await upload;
-  const { id } = await storeUpload({ stream, filename });
+  console.log("TCL: processUpload -> upload", upload);
+  const { createReadStream, filename } = await upload;
+  const { id } = await storeUpload({ createReadStream, filename });
   return id;
 };
 

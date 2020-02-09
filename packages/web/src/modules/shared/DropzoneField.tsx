@@ -15,7 +15,7 @@ export const DropzoneField: React.SFC<FieldProps<any>> = ({
         setFieldValue(name, file);
       }}
     >
-      {() => <p>Drag 'n' drop some files here, or click to select files</p>}
+      <p>Lade dein Foto hier hoch!</p>
     </Dropzone>
   );
 };
