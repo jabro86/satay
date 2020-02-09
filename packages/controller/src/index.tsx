@@ -5,6 +5,6 @@ export * from "./modules/LoginController";
 export * from "./modules/LogoutController";
 export * from "./modules/RegisterController";
 export * from "./modules/MeController";
-
+export * from "./modules/CreateExcercise";
 export * from "./types/NormalizedErrorMap";
 export * from "./schemaTypes";

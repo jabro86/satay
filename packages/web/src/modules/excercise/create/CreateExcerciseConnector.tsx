@@ -1,13 +1,13 @@
-import { Button, Form as AntForm, PageHeader, Breadcrumb, Icon } from "antd";
-import { Form, Formik } from "formik";
+import { withCreateExcercise, CreateExcerciseProps } from "@satay/controller";
+import { Breadcrumb, Button, Form as AntForm, Icon, PageHeader } from "antd";
+import ButtonGroup from "antd/lib/button/button-group";
+import { Form, Formik, FormikActions } from "formik";
 import React, { PureComponent } from "react";
 import { RouteComponentProps } from "react-router";
-
+import { Link } from "react-router-dom";
 import { Page1 } from "./ui/Page1";
 import { Page2 } from "./ui/Page2";
 import { Page3 } from "./ui/Page3";
-import { Link } from "react-router-dom";
-import ButtonGroup from "antd/lib/button/button-group";
 
 interface FormValues {
   title: string;
@@ -26,16 +26,20 @@ interface State {
   page: number;
 }
 
-export class CreateExcerciseConnector extends PureComponent<
-  RouteComponentProps<{}>,
+class C extends PureComponent<
+  RouteComponentProps<{}> & CreateExcerciseProps,
   State
 > {
   state: State = {
     page: 0
   };
 
-  submit = (values: FormValues) => {
-    console.log("TCL: submit -> values", values);
+  submit = async (
+    values: FormValues,
+    { setSubmitting }: FormikActions<FormValues>
+  ) => {
+    await this.props.createExcercise(values);
+    setSubmitting(false);
   };
 
   nextPage = () => {
@@ -80,10 +84,16 @@ export class CreateExcerciseConnector extends PureComponent<
             }}
             onSubmit={this.submit}
           >
-            {() => (
+            {({ isSubmitting, isValid }) => (
               <Form style={{ display: "flex" }}>
                 <div style={{ width: "100%" }}>
-                  <div style={{ minHeight: "300px" }}>
+                  <div
+                    style={{
+                      overflow: "auto ",
+                      minHeight: "300px",
+                      maxHeight: "300px"
+                    }}
+                  >
                     {pages[this.state.page]}
                   </div>
 
@@ -108,7 +118,7 @@ export class CreateExcerciseConnector extends PureComponent<
                           type="primary"
                           icon="save"
                           htmlType="submit"
-                          disabled={false}
+                          disabled={!isValid || isSubmitting}
                         >
                           Speichern
                         </Button>
@@ -170,3 +180,5 @@ export class CreateExcerciseConnector extends PureComponent<
     );
   }
 }
+
+export const CreateExcerciseConnector = withCreateExcercise(C);

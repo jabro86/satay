@@ -8,6 +8,7 @@
 
 export interface MeQuery_me {
   __typename: "User";
+  id: string;
   email: string;
 }
 
@@ -36,6 +37,29 @@ export interface ForgotPasswordChangeMutation {
 export interface ForgotPasswordChangeMutationVariables {
   newPassword: string;
   key: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: CreateExcerciseMutation
+// ====================================================
+
+export interface CreateExcerciseMutation {
+  createExcercise: boolean;
+}
+
+export interface CreateExcerciseMutationVariables {
+  title: string;
+  description: string;
+  pictureUrlExcercise: string;
+  videoUrlExcercise: string;
+  stepsExcercise: string[];
+  breathing: string;
+  pictureUrlMuscles: string;
+  listInvolvedMuscles: string[];
 }
 
 /* tslint:disable */

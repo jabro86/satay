@@ -19,7 +19,7 @@ export const MeController: React.SFC<Props> = ({ children }) => (
 );
 
 const meQuery = gql`
-  query {
+  query MeQuery{
     me {
       id
       email
