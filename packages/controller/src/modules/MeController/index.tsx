@@ -18,7 +18,7 @@ export const MeController: React.SFC<Props> = ({ children }) => (
   </Query>
 );
 
-const meQuery = gql`
+export const meQuery = gql`
   query MeQuery{
     me {
       id

@@ -1,9 +1,8 @@
-import gql from "graphql-tag";
 import * as React from "react";
 import { ChildProps, graphql } from "react-apollo";
 import { Redirect, Route, RouteComponentProps, RouteProps } from "react-router";
-
 import { MeQuery } from "../../schemaTypes";
+import { meQuery } from "../MeController";
 
 interface Props extends RouteProps {
   additionalProps?: object;
@@ -19,6 +18,7 @@ export class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
 
     const { me } = data;
     if (!me) {
+      console.log("not authenticated", routeProps.location.pathname);
       return (
         <Redirect
           to={{
@@ -37,13 +37,5 @@ export class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
     return <Route {...rest} render={this.renderRoute} />;
   }
 }
-
-const meQuery = gql`
-  query MeQuery {
-    me {
-      email
-    }
-  }
-`;
 
 export const AuthRoute = graphql<Props, MeQuery>(meQuery)(C);

@@ -1,11 +1,13 @@
+scalar Upload 
+
 input CreateExcerciseInput {
   title: String!
   description: String!
-  pictureUrlExcercise: String!
-  videoUrlExcercise: String!
+  pictureExcercise: Upload
+  videoExcercise: String!
   stepsExcercise: [String!]!
   breathing: String!
-  pictureUrlMuscles: String!
+  pictureMuscles: Upload
   listInvolvedMuscles: [String!]!
 }
 

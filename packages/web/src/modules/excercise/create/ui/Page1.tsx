@@ -2,6 +2,7 @@ import { Field } from "formik";
 import React from "react";
 
 import { InputField } from "../../../shared/InputField";
+import { DropzoneField } from "../../../shared/DropzoneField";
 
 export const Page1 = () => (
   <>
@@ -12,6 +13,6 @@ export const Page1 = () => (
       component={InputField}
       isTextArea
     />
-    <Field name="pictureUrlExcercise" label="Bild" component={InputField} />
+    <Field name="pictureExcercise" label="Bild" component={DropzoneField} />
   </>
 );

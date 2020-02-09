@@ -1,4 +1,4 @@
-import { withCreateExcercise, CreateExcerciseProps } from "@satay/controller";
+import { withCreateExcercise, WithCreateExcercise } from "@satay/controller";
 import { Breadcrumb, Button, Form as AntForm, Icon, PageHeader } from "antd";
 import ButtonGroup from "antd/lib/button/button-group";
 import { Form, Formik, FormikActions } from "formik";
@@ -8,15 +8,16 @@ import { Link } from "react-router-dom";
 import { Page1 } from "./ui/Page1";
 import { Page2 } from "./ui/Page2";
 import { Page3 } from "./ui/Page3";
+import { FileWithPath } from "react-dropzone";
 
 interface FormValues {
   title: string;
   description: string;
-  pictureUrlExcercise: string;
-  videoUrlExcercise: string;
+  pictureExcercise: FileWithPath | null;
+  videoExcercise: string;
   stepsExcercise: string[];
   breathing: string;
-  pictureUrlMuscles: string;
+  pictureMuscles: FileWithPath | null;
   listInvolvedMuscles: string[];
 }
 
@@ -27,7 +28,7 @@ interface State {
 }
 
 class C extends PureComponent<
-  RouteComponentProps<{}> & CreateExcerciseProps,
+  RouteComponentProps<{}> & WithCreateExcercise,
   State
 > {
   state: State = {
@@ -77,103 +78,106 @@ class C extends PureComponent<
               description: "",
               breathing: "",
               listInvolvedMuscles: [],
-              pictureUrlExcercise: "",
-              pictureUrlMuscles: "",
+              pictureExcercise: null,
+              pictureMuscles: null,
               stepsExcercise: [],
-              videoUrlExcercise: ""
+              videoExcercise: ""
             }}
             onSubmit={this.submit}
           >
-            {({ isSubmitting, isValid }) => (
-              <Form style={{ display: "flex" }}>
-                <div style={{ width: "100%" }}>
-                  <div
-                    style={{
-                      overflow: "auto ",
-                      minHeight: "300px",
-                      maxHeight: "300px"
-                    }}
-                  >
-                    {pages[this.state.page]}
-                  </div>
+            {({ isSubmitting, isValid, values }) =>
+              // @ts-ignore
+              console.log(values) || (
+                <Form style={{ display: "flex" }}>
+                  <div style={{ width: "100%" }}>
+                    <div
+                      style={{
+                        overflow: "auto ",
+                        minHeight: "300px",
+                        maxHeight: "300px"
+                      }}
+                    >
+                      {pages[this.state.page]}
+                    </div>
 
-                  <AntForm.Item wrapperCol={{ span: 12, offset: 4 }}>
-                    {this.state.page === pages.length - 1 ? (
-                      <div>
-                        <ButtonGroup style={{ marginRight: "8px" }}>
-                          <Button type="primary" onClick={this.previousPage}>
-                            <Icon type="left"></Icon>
-                            Zurück
-                          </Button>
+                    <AntForm.Item wrapperCol={{ span: 12, offset: 4 }}>
+                      {this.state.page === pages.length - 1 ? (
+                        <div>
+                          <ButtonGroup style={{ marginRight: "8px" }}>
+                            <Button type="primary" onClick={this.previousPage}>
+                              <Icon type="left"></Icon>
+                              Zurück
+                            </Button>
+                            <Button
+                              type="primary"
+                              onClick={this.nextPage}
+                              disabled={true}
+                            >
+                              Weiter
+                              <Icon type="right"></Icon>
+                            </Button>
+                          </ButtonGroup>
                           <Button
                             type="primary"
-                            onClick={this.nextPage}
-                            disabled={true}
+                            icon="save"
+                            htmlType="submit"
+                            disabled={!isValid || isSubmitting}
                           >
-                            Weiter
-                            <Icon type="right"></Icon>
+                            Speichern
                           </Button>
-                        </ButtonGroup>
-                        <Button
-                          type="primary"
-                          icon="save"
-                          htmlType="submit"
-                          disabled={!isValid || isSubmitting}
-                        >
-                          Speichern
-                        </Button>
-                      </div>
-                    ) : this.state.page === 0 ? (
-                      <div>
-                        <ButtonGroup style={{ marginRight: "8px" }}>
+                        </div>
+                      ) : this.state.page === 0 ? (
+                        <div>
+                          <ButtonGroup style={{ marginRight: "8px" }}>
+                            <Button
+                              type="primary"
+                              onClick={this.previousPage}
+                              disabled={true}
+                            >
+                              <Icon type="left"></Icon>
+                              Zurück
+                            </Button>
+                            <Button type="primary" onClick={this.nextPage}>
+                              Weiter
+                              <Icon type="right"></Icon>
+                            </Button>
+                          </ButtonGroup>
                           <Button
                             type="primary"
-                            onClick={this.previousPage}
+                            icon="save"
+                            htmlType="submit"
                             disabled={true}
                           >
-                            <Icon type="left"></Icon>
-                            Zurück
+                            Speichern
                           </Button>
-                          <Button type="primary" onClick={this.nextPage}>
-                            Weiter
-                            <Icon type="right"></Icon>
+                        </div>
+                      ) : (
+                        <div>
+                          <ButtonGroup style={{ marginRight: "8px" }}>
+                            <Button type="primary" onClick={this.previousPage}>
+                              <Icon type="left"></Icon>
+                              Zurück
+                            </Button>
+                            <Button type="primary" onClick={this.nextPage}>
+                              Weiter
+                              <Icon type="right"></Icon>
+                            </Button>
+                          </ButtonGroup>
+                          <Button
+                            type="primary"
+                            icon="save"
+                            htmlType="submit"
+                            disabled={true}
+                          >
+                            Speichern
                           </Button>
-                        </ButtonGroup>
-                        <Button
-                          type="primary"
-                          icon="save"
-                          htmlType="submit"
-                          disabled={true}
-                        >
-                          Speichern
-                        </Button>
-                      </div>
-                    ) : (
-                      <div>
-                        <ButtonGroup style={{ marginRight: "8px" }}>
-                          <Button type="primary" onClick={this.previousPage}>
-                            <Icon type="left"></Icon>
-                            Zurück
-                          </Button>
-                          <Button type="primary" onClick={this.nextPage}>
-                            Weiter
-                            <Icon type="right"></Icon>
-                          </Button>
-                        </ButtonGroup>
-                        <Button
-                          type="primary"
-                          icon="save"
-                          htmlType="submit"
-                          disabled={true}
-                        >
-                          Speichern
-                        </Button>
-                      </div>
-                    )}
-                  </AntForm.Item>
-                </div>
-              </Form>
-            )}
+                        </div>
+                      )}
+                    </AntForm.Item>
+                  </div>
+                </Form>
+              )
+            }
           </Formik>
         </div>
       </>

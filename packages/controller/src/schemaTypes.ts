@@ -3,24 +3,6 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: MeQuery
-// ====================================================
-
-export interface MeQuery_me {
-  __typename: "User";
-  id: string;
-  email: string;
-}
-
-export interface MeQuery {
-  me: MeQuery_me | null;
-}
-
-/* tslint:disable */
-/* eslint-disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL mutation operation: ForgotPasswordChangeMutation
 // ====================================================
 
@@ -54,11 +36,11 @@ export interface CreateExcerciseMutation {
 export interface CreateExcerciseMutationVariables {
   title: string;
   description: string;
-  pictureUrlExcercise: string;
-  videoUrlExcercise: string;
+  pictureExcercise?: any | null;
+  videoExcercise: string;
   stepsExcercise: string[];
   breathing: string;
-  pictureUrlMuscles: string;
+  pictureMuscles?: any | null;
   listInvolvedMuscles: string[];
 }
 
@@ -117,6 +99,24 @@ export interface LoginMutationVariables {
 
 export interface LogoutMutation {
   logout: boolean | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: MeQuery
+// ====================================================
+
+export interface MeQuery_me {
+  __typename: "User";
+  id: string;
+  email: string;
+}
+
+export interface MeQuery {
+  me: MeQuery_me | null;
 }
 
 /* tslint:disable */

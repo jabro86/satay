@@ -8,6 +8,6 @@ export const Page2 = () => (
   <>
     <Field name="stepsExcercise" label="Ausführung" component={TagField} />
     <Field name="breathing" label="Atmung" component={InputField} isTextArea />
-    <Field name="videoUrlExcercise" label="Video" component={InputField} />
+    <Field name="videoExcercise" label="Video" component={InputField} />
   </>
 );

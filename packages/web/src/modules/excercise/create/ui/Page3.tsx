@@ -7,7 +7,7 @@ import { TagField } from "../../../shared/TagField";
 export const Page3 = () => (
   <>
     <Field
-      name="pictureUrlMuscles"
+      name="pictureMuscles"
       label="Bild Muskeln"
       component={InputField}
     />
